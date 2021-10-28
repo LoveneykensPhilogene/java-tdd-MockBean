@@ -1,0 +1,13 @@
+package br.testeunitario.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.testeunitario.model.BookingModel;
+
+public interface BookingRepository extends JpaRepository<BookingModel,String> {
+	
+	Optional<BookingModel>findByReserveName(String name);
+
+}
