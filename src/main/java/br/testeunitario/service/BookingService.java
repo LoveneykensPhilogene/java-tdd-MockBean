@@ -13,14 +13,14 @@ import br.testeunitario.repository.BookingRepository;
 public class BookingService {
 	
 	@Autowired
-	private BookingRepository bookingRepository
+	private BookingRepository bookingRepository;
 
 	public int bookingDaysCalculatorWithDatabase(String name) {
 		
 		Optional<BookingModel> bookingModelOptional=bookingRepository.findByReserveName(name);
 		
 		
-		return Period.between(bookingModelOptional.get(), null);
+		return Period.between(bookingModelOptional.get().getCheckIn(), bookingModelOptional.get().getCheckOut()).getDays();
 	}
 	
 	
